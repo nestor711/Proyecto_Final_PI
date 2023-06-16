@@ -4,164 +4,380 @@
  */
 package Vistas;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.event.ActionListener;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
- * @author USER
+ * @author 
  */
-public class VistaRegistrarUsuarios extends JFrame {
-
-    private JLabel lblNombreUsuario;
-    private JLabel lblApellidoUsuario;
-    private JLabel lblNickUsuario;
-    private JLabel lblDomicilioUsuario;
-    private JLabel lblPasswordUsuario;
-    private JLabel lblTelefonoUsuario;
-    private JLabel lblCorreoUsuario;
-    private JLabel lblTipoUsuario;
-
-    private JTextField txtNombreUsuario;
-    private JTextField txtApellidoUsuario;
-    private JTextField txtNickUsuario;
-    private JTextField txtDomicilioUsuario;
-    private JTextField txtPasswordUsuario;
-    private JTextField txtTelefonoUsuario;
-    private JTextField txtCorreoUsuario;
-    private JTextField txtTipoUsuario;
-
-    private JButton btnRegistrar;
-    private JButton btnCancelar;
-
-    private Container miContenedor;
-
-    public VistaRegistrarUsuarios() {
-        inicializadorDeMetodos();
-        setTitle("REGISTRO DE USUARIOS");
-        setVisible(true);
-        setSize(1000, 700);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        setBackground(Color.CYAN);
-        Toolkit miPantalla = Toolkit.getDefaultToolkit();
-        Image miIcono = miPantalla.getImage("Univalle.png");
-        setIconImage(miIcono);
-
-        setLocationRelativeTo(null);
-
-    }
-
-    public void inicializadorDeMetodos() {
-
-        lblNombreUsuario = new JLabel("NOMBRE DEL USUARIO:");
-        lblNombreUsuario.setBounds(50, 50, 300, 40);
-        lblNombreUsuario.setOpaque(true);
-        lblNombreUsuario.setBackground(Color.LIGHT_GRAY);
-        lblNombreUsuario.setHorizontalAlignment(JLabel.CENTER);
-        lblNombreUsuario.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        txtNombreUsuario = new JTextField(10);
-        txtNombreUsuario.setBounds(500, 50, 300, 40);
-        txtNombreUsuario.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
-
-        lblApellidoUsuario = new JLabel("APELLIDO DEL USUARIO:");
-        lblApellidoUsuario.setBounds(50, 110, 300, 40);
-        lblApellidoUsuario.setOpaque(true);
-        lblApellidoUsuario.setBackground(Color.LIGHT_GRAY);
-        lblApellidoUsuario.setHorizontalAlignment(JLabel.CENTER);
-        lblApellidoUsuario.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        txtApellidoUsuario = new JTextField(10);
-        txtApellidoUsuario.setBounds(500, 110, 300, 40);
-        txtApellidoUsuario.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
-
-        lblNickUsuario = new JLabel("NICK DEL USUARIO:");
-        lblNickUsuario.setBounds(50, 170, 300, 40);
-        lblNickUsuario.setOpaque(true);
-        lblNickUsuario.setBackground(Color.LIGHT_GRAY);
-        lblNickUsuario.setHorizontalAlignment(JLabel.CENTER);
-        lblNickUsuario.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        txtNickUsuario = new JTextField(10);
-        txtNickUsuario.setBounds(500, 170, 300, 40);
-        txtNickUsuario.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
-
-        lblDomicilioUsuario = new JLabel("DOMICILIO DEL USUARIO:");
-        lblDomicilioUsuario.setBounds(50, 230, 300, 40);
-        lblDomicilioUsuario.setOpaque(true);
-        lblDomicilioUsuario.setBackground(Color.LIGHT_GRAY);
-        lblDomicilioUsuario.setHorizontalAlignment(JLabel.CENTER);
-        lblDomicilioUsuario.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        txtDomicilioUsuario = new JTextField(10);
-        txtDomicilioUsuario.setBounds(500, 230, 300, 40);
-        txtDomicilioUsuario.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
-
-        lblPasswordUsuario = new JLabel("CONTRASEÑA DEL USUARIO:");
-        lblPasswordUsuario.setBounds(50, 290, 300, 40);
-        lblPasswordUsuario.setOpaque(true);
-        lblPasswordUsuario.setBackground(Color.LIGHT_GRAY);
-        lblPasswordUsuario.setHorizontalAlignment(JLabel.CENTER);
-        lblPasswordUsuario.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        txtPasswordUsuario = new JTextField(10);
-        txtPasswordUsuario.setBounds(500, 290, 300, 40);
-        txtPasswordUsuario.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
-
-        lblTelefonoUsuario = new JLabel("TELEFONO DEL USUARIO:");
-        lblTelefonoUsuario.setBounds(50, 350, 300, 40);
-        lblTelefonoUsuario.setOpaque(true);
-        lblTelefonoUsuario.setBackground(Color.LIGHT_GRAY);
-        lblTelefonoUsuario.setHorizontalAlignment(JLabel.CENTER);
-        lblTelefonoUsuario.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        txtTelefonoUsuario = new JTextField(10);
-        txtTelefonoUsuario.setBounds(500, 350, 300, 40);
-        txtTelefonoUsuario.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
-
-        lblCorreoUsuario = new JLabel("CORREO DEL USUARIO:");
-        lblCorreoUsuario.setBounds(50, 410, 300, 40);
-        lblCorreoUsuario.setOpaque(true);
-        lblCorreoUsuario.setBackground(Color.LIGHT_GRAY);
-        lblCorreoUsuario.setHorizontalAlignment(JLabel.CENTER);
-        lblCorreoUsuario.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        txtCorreoUsuario = new JTextField(10);
-        txtCorreoUsuario.setBounds(500, 410, 300, 40);
-        txtCorreoUsuario.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
-
-        lblTipoUsuario = new JLabel("TIPO DE USUARIO:");
-        lblTipoUsuario.setBounds(50, 470, 300, 40);
-        lblTipoUsuario.setOpaque(true);
-        lblTipoUsuario.setBackground(Color.LIGHT_GRAY);
-        lblTipoUsuario.setHorizontalAlignment(JLabel.CENTER);
-        lblTipoUsuario.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        txtTipoUsuario = new JTextField(10);
-        txtTipoUsuario.setBounds(500, 470, 300, 40);
-        txtTipoUsuario.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
-
-        btnCancelar = new JButton("CANCELAR");
-        btnCancelar.setBounds(50, 530, 300, 40);
-
-        btnRegistrar = new JButton("REGISTRAR USUARIO");
-        btnRegistrar.setBounds(500, 530, 300, 40);
-
-        miContenedor = getContentPane();
-        miContenedor.setLayout(null);
-        miContenedor.add(lblNombreUsuario);
-        miContenedor.add(lblApellidoUsuario);
-        miContenedor.add(lblNickUsuario);
-        miContenedor.add(lblDomicilioUsuario);
-        miContenedor.add(lblPasswordUsuario);
-        miContenedor.add(lblTelefonoUsuario);
-        miContenedor.add(lblCorreoUsuario);
-        miContenedor.add(lblTipoUsuario);
-        miContenedor.add(btnCancelar);
+public class VistaRegistroUsuario extends javax.swing.JFrame {
+    
+    public void limpiar(){
         
-        miContenedor.add(txtNombreUsuario);
-        miContenedor.add(txtApellidoUsuario);
-        miContenedor.add(txtNickUsuario);
-        miContenedor.add(txtDomicilioUsuario);
-        miContenedor.add(txtPasswordUsuario);
-        miContenedor.add(txtTelefonoUsuario);
-        miContenedor.add(txtCorreoUsuario);
-        miContenedor.add(txtTipoUsuario);
-        miContenedor.add(btnRegistrar);
-
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextField5.setText("");
+        jTextField6.setText("");
+        jTextField7.setText("");
+        jPasswordField1.setText("");
+        
+    }
+    
+    public JTextField gettxtNombre(){
+        return jTextField1;
     }
 
+    public JTextField gettxtApellido(){
+        return jTextField2;
+    }
+    
+    public JTextField gettxtNick(){
+        return jTextField3;
+    }
+    
+    public JPasswordField gettxtContra(){
+        return jPasswordField1;
+    }
+    
+    public JTextField gettxtDomicilio(){
+        return jTextField4;
+    }
+    
+    public JTextField gettxtTel(){
+        return jTextField6;
+    }
+    
+    public JTextField gettxtCorreo(){
+        return jTextField7;
+    }
+    
+    public JComboBox<String> gettxtTipoU(){
+        return jComboBox1;
+    }
+    
+    public void gestionMensajes(String mensaje, String titulo, int icono){
+         JOptionPane.showMessageDialog(this,mensaje, titulo, icono);
+    }
+    
+    ///////////////////
+    public String txtNombre(){
+        return jTextField1.getText();
+    }
+    
+    public String txtApellido(){
+        return jTextField2.getText();
+    }
+    
+    public String txtNick(){
+        return jTextField3.getText();
+    }
+    
+    public String txtContra(){
+        return jTextField4.getText();
+    }
+    
+    public String txtDomicilio(){
+        return jTextField5.getText();
+    }
+    
+    public String txtTel(){
+        return jTextField6.getText();
+    }
+    
+    public String txtCorreo(){
+        return jTextField7.getText();
+    }
+    
+    public String txtTipoU(){
+        return jTextField8.getText();
+    }
+    
+    public void botonRegistrar(ActionListener miAction){
+        jButton2.addActionListener(miAction);
+    }
+    
+    public void botonCancelar(ActionListener miAction){
+        jButton1.addActionListener(miAction);
+    }
+    
+    /**
+     * Creates new form VistaRegistroUsuario
+     */
+    public VistaRegistroUsuario() {
+        initComponents();
+        setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+//        setIconifiable(true);
+//        setClosable(true);
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jTextField5 = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registro de Usuario");
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Registro Usuario"));
+        jPanel1.setToolTipText("");
+        jPanel1.setName(""); // NOI18N
+
+        jLabel1.setText("Nombre :");
+
+        jLabel2.setText("Apellidos :");
+
+        jLabel3.setText("Nick Usuario :");
+
+        jLabel5.setText("Contraseña :");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
+                .addGap(62, 62, 62))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        jLabel4.setText("Domicilio del Usuario :");
+
+        jLabel6.setText("Telefono :");
+
+        jLabel7.setText("Correo :");
+
+        jLabel8.setText("Tipo de Usuario :");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo...", "Administrador", "Invitado" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar (1).png"))); // NOI18N
+        jButton1.setText("Cancelar");
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/comprobado (1).png"))); // NOI18N
+        jButton2.setText("Registrar");
+        jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(37, Short.MAX_VALUE))))
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+    }                                          
+
+    /**
+     * @param args the command line arguments
+     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(VistaRegistroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(VistaRegistroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(VistaRegistroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(VistaRegistroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new VistaRegistroUsuario().setVisible(true);
+//            }
+//        });
+//    }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    // End of variables declaration                   
+
+    
 }
