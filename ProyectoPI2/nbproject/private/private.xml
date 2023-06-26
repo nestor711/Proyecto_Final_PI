@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/Downloads/ProyectoPI/src/Controladores/ControladorVistaIngreso.java</file>
+            <file>file:/D:/Downloads/ProyectoPI/src/Controladores/ControladorPrestamo.java</file>
+            <file>file:/D:/Downloads/ProyectoPI/src/Services/jdbc.properties</file>
+            <file>file:/D:/Downloads/ProyectoPI/src/Controladores/ControladorVistaOpciones.java</file>
+            <file>file:/D:/Downloads/ProyectoPI/src/Modelos/PrestamoDAO.java</file>
+            <file>file:/D:/Downloads/ProyectoPI/src/Controladores/ControladorDevolucion.java</file>
+            <file>file:/D:/Downloads/ProyectoPI/src/Modelos/Usuario.java</file>
+            <file>file:/D:/Downloads/ProyectoPI/src/Controladores/ControladorEquipos.java</file>
+            <file>file:/D:/Downloads/ProyectoPI/src/Services/Fachada.java</file>
+            <file>file:/D:/Downloads/ProyectoPI/src/Modelos/EquipoDAO.java</file>
+            <file>file:/D:/Downloads/ProyectoPI/src/Modelos/UsuarioDAO.java</file>
+            <file>file:/D:/Downloads/ProyectoPI/src/Modelos/IUsuarioDAO.java</file>
+            <file>file:/D:/Downloads/ProyectoPI/src/Vistas/VistasPrestamos.java</file>
+        </group>
+    </open-files>
+</project-private>
