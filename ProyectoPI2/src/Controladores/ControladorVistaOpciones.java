@@ -4,8 +4,6 @@
  */
 package Controladores;
 
-
-
 import Modelos.EquipoDAO;
 import Modelos.PrestamoDAO;
 import Vistas.VistaDeOpciones;
@@ -40,7 +38,7 @@ public class ControladorVistaOpciones {
         public void actionPerformed(ActionEvent e) {
 
             if (e.getActionCommand().equalsIgnoreCase("EQUIPOS")) {
-                
+
                 VistaIngresoDeEquipo miVistaEquipo = new VistaIngresoDeEquipo();
                 EquipoDAO unEquipo = new EquipoDAO();
                 ControladorEquipos miControlador = new ControladorEquipos(unEquipo, miVistaEquipo);
@@ -48,24 +46,24 @@ public class ControladorVistaOpciones {
             }
 
             if (e.getActionCommand().equalsIgnoreCase("PRESTAMOS")) {
-                
+
                 VistasPrestamos miVistaPrestamos = new VistasPrestamos();
                 VistaIngresoDeEquipo miVistaEquipo = new VistaIngresoDeEquipo();
-                EquipoDAO miEquipo= new EquipoDAO();
+                EquipoDAO miEquipo = new EquipoDAO();
                 PrestamoDAO miPrestamo = new PrestamoDAO();
-                
+
                 ControladorPrestamo miConrolador = new ControladorPrestamo(miEquipo, miPrestamo, miVistaPrestamos, miVistaEquipo);
-                
+
                 miVista.addJDesktopPane(miVistaPrestamos);
-                
-               
+
             }
             if (e.getActionCommand().equalsIgnoreCase("DEVOLVER PRESTAMOS")) {
-                
+
                 PrestamoDAO miPrestamo = new PrestamoDAO();
                 VistaDevolucionPrestamo miVistaDevolucion = new VistaDevolucionPrestamo();
                 VistasPrestamos miVistaTxt = new VistasPrestamos();
-                ControladorDevolucion miControlador= new ControladorDevolucion(miVistaDevolucion, miVistaTxt, miPrestamo);
+                EquipoDAO equipos = new EquipoDAO();
+                ControladorDevolucion miControlador = new ControladorDevolucion(miVistaDevolucion, miVistaTxt, miPrestamo, equipos);
                 miVista.addJDesktopPane(miVistaDevolucion);
             }
             if (e.getActionCommand().equalsIgnoreCase("SALIR")) {

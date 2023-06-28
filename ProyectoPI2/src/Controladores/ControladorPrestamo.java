@@ -4,7 +4,6 @@
  */
 package Controladores;
 
-
 import Modelos.Equipo;
 import Modelos.EquipoDAO;
 import Modelos.Prestamo;
@@ -28,22 +27,18 @@ import javax.swing.table.DefaultTableModel;
  * @author Eider
  */
 public class ControladorPrestamo {
-    
+
     private PrestamoDAO modelo;
     private EquipoDAO modeloEquipo;
     private VistasPrestamos miVista;
     private VistaIngresoDeEquipo vistaEquipo;
-    
-    
-    
+
     private JTable tblEquipoDispo;
     private JTable tblPrestamo;
-    
+
     private JTextField txtNombre;
     private JTextField txtUbiActual;
-    
- 
-    
+
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JTextArea jTextEstado;
@@ -54,65 +49,54 @@ public class ControladorPrestamo {
     private javax.swing.JTextField jTextDestino;
     private javax.swing.JTextField jTextPrestamo;
 
-    public ControladorPrestamo(EquipoDAO modeloEquipo,PrestamoDAO modelo, VistasPrestamos miVista, VistaIngresoDeEquipo vistaEquipo) {
+    public ControladorPrestamo(EquipoDAO modeloEquipo, PrestamoDAO modelo, VistasPrestamos miVista, VistaIngresoDeEquipo vistaEquipo) {
         this.modeloEquipo = modeloEquipo;
         this.modelo = modelo;
         this.miVista = miVista;
         this.vistaEquipo = vistaEquipo;
-        
-        
-        
+
         ArrayList<Equipo> listadoeqipos;
         listadoeqipos = this.modeloEquipo.listadoEquiposDisponible("0");
-        
+
         txtNombre = this.vistaEquipo.nombre();
         txtUbiActual = this.vistaEquipo.UbiActual();
-        
+
         tblEquipoDispo = this.miVista.tblEquipos();
         tblEquipoDispo.addMouseListener(new ProgramaMouseListener());
         cargarProgramas(listadoeqipos);
-        
-        
-        
+
         ArrayList<Prestamo> listadoprestamos;
         listadoprestamos = this.modelo.listadoPrestamo("0");
-        
-        tblPrestamo= this.miVista.tblPrestamos();
+
+        tblPrestamo = this.miVista.tblPrestamos();
         tblPrestamo.addMouseListener(new ProgramaMouseListenerPrestamo());
         cargarPrestamos(listadoprestamos);
-        
-        
-        
-     
-        
-        jButton1= this.miVista.btnCanc();
-        jButton2= this.miVista.btnPrestamo();
-        jTextEstado= this.miVista.txtEstado();
-        jTextActividad= this.miVista.txtActividades();
-        jTextNombre= this.miVista.txtResponsable();
-        jTextSalida= this.miVista.txtfechaSalida();
-        jTextRetorno= this.miVista.txtfechaRetorno();
-        jTextDestino= this.miVista.txtLugarDestino();
-        jTextPrestamo= this.miVista.txtEquipo();
-        
-        
+
+        jButton1 = this.miVista.btnCanc();
+        jButton2 = this.miVista.btnPrestamo();
+        jTextEstado = this.miVista.txtEstado();
+        jTextActividad = this.miVista.txtActividades();
+        jTextNombre = this.miVista.txtResponsable();
+        jTextSalida = this.miVista.txtfechaSalida();
+        jTextRetorno = this.miVista.txtfechaRetorno();
+        jTextDestino = this.miVista.txtLugarDestino();
+        jTextPrestamo = this.miVista.txtEquipo();
+
         jButton1.addActionListener(new PrestamoListener());
         jButton2.addActionListener(new PrestamoListener());
-        
+
     }
 
-   public class PrestamoListener implements ActionListener {
+    public class PrestamoListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
 
             if (e.getActionCommand().equalsIgnoreCase("REALIZAR PRESTAMO")) {
-                
-                registrar();               
-                tblPrestamo.updateUI();               
-                
-                
-                
+
+                registrar();
+                tblPrestamo.updateUI();
+
             }
             if (e.getActionCommand().equalsIgnoreCase("CANCELAR")) {
                 limpiar();
@@ -120,64 +104,56 @@ public class ControladorPrestamo {
         }
 
     }
-   
 
-   
-   
-  
-    
-   private void limpiar(){
-        
+    private void limpiar() {
+
         jTextEstado.setText("");
         jTextActividad.setText("");
         jTextNombre.setText("");
         jTextSalida.setText("");
         jTextRetorno.setText("");
         jTextDestino.setText("");
-        
-   }
-    
-    private void limpiarListadoTabla(){
+
+    }
+
+    private void limpiarListadoTabla() {
         DefaultTableModel tableModelo;
         tableModelo = (DefaultTableModel) tblEquipoDispo.getModel();
         tableModelo.getDataVector().removeAllElements();
     }
-    
-    
-    public void cargarProgramas(ArrayList<Equipo> listadoEquipos){
+
+    public void cargarProgramas(ArrayList<Equipo> listadoEquipos) {
         DefaultTableModel tableModelo;
-        tableModelo = (DefaultTableModel) tblEquipoDispo.getModel();        
+        tableModelo = (DefaultTableModel) tblEquipoDispo.getModel();
         limpiarListadoTabla();
-        for(int i= 0; i < listadoEquipos.size(); i++){
-              tableModelo.addRow(new Object[]{
-              listadoEquipos.get(i).getCodigoEquipo(),
-              listadoEquipos.get(i).getUbicacionActual()});
+        for (int i = 0; i < listadoEquipos.size(); i++) {
+            tableModelo.addRow(new Object[]{
+                listadoEquipos.get(i).getCodigoEquipo(),
+                listadoEquipos.get(i).getUbicacionActual()});
         }
     }
-    
-    
-    class ProgramaMouseListener extends MouseAdapter{
+
+    class ProgramaMouseListener extends MouseAdapter {
+
         @Override
         public void mouseClicked(MouseEvent e) {
             DefaultTableModel tableModelo;
             tableModelo = (DefaultTableModel) tblEquipoDispo.getModel();
 
-            if(tblEquipoDispo.getSelectedRow()==-1){
-                if(tblEquipoDispo.getRowCount()==0){
-                    JOptionPane.showMessageDialog(null,"No hay registros");
+            if (tblEquipoDispo.getSelectedRow() == -1) {
+                if (tblEquipoDispo.getRowCount() == 0) {
+                    JOptionPane.showMessageDialog(null, "No hay registros");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Seleccione una fila");
                 }
-                else{
-                    JOptionPane.showMessageDialog(null,"Seleccione una fila");
-                }
-            }else {                               
+            } else {
                 jTextPrestamo.setText(tableModelo.getValueAt(
-                        tblEquipoDispo.getSelectedRow(), 0).toString());                       
+                        tblEquipoDispo.getSelectedRow(), 0).toString());
             }
         }
-        
+
     }
-    
-    
+
     private void registrar() {
 
         if (jTextNombre.getText().trim().equals("")) {
@@ -207,8 +183,7 @@ public class ControladorPrestamo {
         } else if (jTextPrestamo.getText().trim().equals("")) {
             miVista.gestionMensajes("Seleccione un equipo",
                     "Error de Entrada", JOptionPane.ERROR_MESSAGE);
-        }else {
-            
+        } else {
 
             Prestamo prestamo = new Prestamo();
             prestamo.setUnEquipo(jTextPrestamo.getText());
@@ -219,12 +194,16 @@ public class ControladorPrestamo {
             prestamo.setEstadoEquipo(jTextEstado.getText());
             prestamo.setActividades(jTextActividad.getText());
 
+            Equipo miEquipo = new Equipo();
+            miEquipo.setCodigoEquipo(jTextPrestamo.getText());
+            miEquipo.setUbicacionActual(jTextDestino.getText());
+
             int tamaño;
             tamaño = modelo.listadoPrestamo(prestamo.getNombreResponsable()).size();
 
             if (tamaño == 0) {
                 int resultado = 0;
-                resultado = modelo.grabarPrestamo(prestamo);
+                resultado = modelo.grabarPrestamo(prestamo, miEquipo);
                 if (resultado == 1) {
                     miVista.gestionMensajes("Registro Grabado con éxito",
                             "Confirmación", JOptionPane.INFORMATION_MESSAGE);
@@ -244,14 +223,13 @@ public class ControladorPrestamo {
         }
 
     }
-        
-    
-    private void limpiarListadoPrestamo(){
+
+    private void limpiarListadoPrestamo() {
         DefaultTableModel tableModelo;
         tableModelo = (DefaultTableModel) tblPrestamo.getModel();
         tableModelo.getDataVector().removeAllElements();
     }
-    
+
     public void cargarPrestamos(ArrayList<Prestamo> listadoPrestamos) {
         DefaultTableModel tableModelo;
         tableModelo = (DefaultTableModel) tblPrestamo.getModel();
@@ -267,23 +245,23 @@ public class ControladorPrestamo {
                 listadoPrestamos.get(i).getActividades()});
         }
     }
-        
-    class ProgramaMouseListenerPrestamo extends MouseAdapter{
+
+    class ProgramaMouseListenerPrestamo extends MouseAdapter {
+
         @Override
         public void mouseClicked(MouseEvent e) {
             DefaultTableModel tableModelo;
             tableModelo = (DefaultTableModel) tblPrestamo.getModel();
 
-            if(tblPrestamo.getSelectedRow()==-1){
-                if(tblPrestamo.getRowCount()==0){
-                    JOptionPane.showMessageDialog(null,"No hay registros");
+            if (tblPrestamo.getSelectedRow() == -1) {
+                if (tblPrestamo.getRowCount() == 0) {
+                    JOptionPane.showMessageDialog(null, "No hay registros");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Seleccione una fila");
                 }
-                else{
-                    JOptionPane.showMessageDialog(null,"Seleccione una fila");
-                }
-            }else {                               
+            } else {
                 jTextPrestamo.setText(tableModelo.getValueAt(
-                        tblEquipoDispo.getSelectedRow(), 0).toString());            
+                        tblEquipoDispo.getSelectedRow(), 0).toString());
                 jTextNombre.setText(tableModelo.getValueAt(
                         tblEquipoDispo.getSelectedRow(), 1).toString());
                 jTextSalida.setText(tableModelo.getValueAt(
@@ -298,7 +276,7 @@ public class ControladorPrestamo {
                         tblEquipoDispo.getSelectedRow(), 6).toString());
             }
         }
-        
+
     }
-    
+
 }

@@ -13,13 +13,10 @@ import javax.swing.JOptionPane;
  *
  * @author Eider
  */
-public class EquipoDAO implements IEquipoDAO{
+public class EquipoDAO implements IEquipoDAO {
 
     public EquipoDAO() {
     }
-    
-    
-    
 
     @Override
     public int grabarEquipo(Equipo e) {
@@ -30,7 +27,7 @@ public class EquipoDAO implements IEquipoDAO{
         rtdo = 0;
         try {
             con = Fachada.getConnection();
-                                                     //1 2 3 4 5 6 7 8
+            //1 2 3 4 5 6 7 8
             String sql = "INSERT INTO EQUIPO values (?,?,?,?,?,?,?,?)"; //parametros
             pstm = con.prepareStatement(sql);
             pstm.setString(1, e.getCodigoEquipo());
@@ -57,7 +54,7 @@ public class EquipoDAO implements IEquipoDAO{
             }
         }
         return rtdo;
-        }
+    }
 
     @Override
     public ArrayList<Equipo> listadoEquipos(String codigoEquipo) {
@@ -123,25 +120,24 @@ public class EquipoDAO implements IEquipoDAO{
         PreparedStatement pstm = null;
         int rtdo;
         rtdo = 0;
-        try{
+        try {
             con = Fachada.getConnection();
             String sql = "DELETE FROM equipo WHERE codigodeequipo = ? ";
             pstm = con.prepareStatement(sql);
             pstm.setString(1, codigo);
-            rtdo = pstm.executeUpdate(); 
+            rtdo = pstm.executeUpdate();
             return rtdo;
-        }
-        catch(SQLException ex){
-            JOptionPane.showMessageDialog(null,"Código : " + 
-                        ex.getErrorCode() + "\nError :" + ex.getMessage());
-        } 
-        finally{
-            try{
-                if(pstm!=null) pstm.close();                
-            }
-            catch(SQLException ex){
-                JOptionPane.showMessageDialog(null,"Código : " + 
-                        ex.getErrorCode() + "\nError :" + ex.getMessage());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Código : "
+                    + ex.getErrorCode() + "\nError :" + ex.getMessage());
+        } finally {
+            try {
+                if (pstm != null) {
+                    pstm.close();
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Código : "
+                        + ex.getErrorCode() + "\nError :" + ex.getMessage());
             }
         }
         return rtdo;
@@ -154,14 +150,13 @@ public class EquipoDAO implements IEquipoDAO{
         pstm = null;
         int rtdo;
         rtdo = 0;
-        try{
+        try {
             con = Fachada.getConnection();
-            String sql = "UPDATE equipo " +
-                         "SET  responsable = ?, frecuenciamantenimiento = ?, ultimomantenimiento = ?, proximomantenimiento= ?, ubicacionactual= ?, fechadecompra= ?, estado= ? "
-                    +    "WHERE codigodeequipo=?";
-            pstm = con.prepareStatement(sql); 
-            
-            
+            String sql = "UPDATE equipo "
+                    + "SET  responsable = ?, frecuenciamantenimiento = ?, ultimomantenimiento = ?, proximomantenimiento= ?, ubicacionactual= ?, fechadecompra= ?, estado= ? "
+                    + "WHERE codigodeequipo=?";
+            pstm = con.prepareStatement(sql);
+
             pstm.setString(1, e.getResponsable());
             pstm.setString(2, e.getFrecuenciaMantenimiento());
             pstm.setString(3, e.getUltimoMantenimiento());
@@ -170,19 +165,18 @@ public class EquipoDAO implements IEquipoDAO{
             pstm.setString(6, e.getFechaCompra());
             pstm.setString(7, e.getEstado());
             pstm.setString(8, e.getCodigoEquipo());
-            rtdo = pstm.executeUpdate();  
-        }
-        catch(SQLException ex){
-            JOptionPane.showMessageDialog(null,"Código : " + 
-                        ex.getErrorCode() + "\nError :" + ex.getMessage());
-        }
-        finally{
-            try{
-                if(pstm!=null) pstm.close();                
-            }
-            catch(SQLException ex){
-                JOptionPane.showMessageDialog(null,"Código : " + 
-                        ex.getErrorCode() + "\nError :" + ex.getMessage());
+            rtdo = pstm.executeUpdate();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Código : "
+                    + ex.getErrorCode() + "\nError :" + ex.getMessage());
+        } finally {
+            try {
+                if (pstm != null) {
+                    pstm.close();
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Código : "
+                        + ex.getErrorCode() + "\nError :" + ex.getMessage());
             }
         }
         return rtdo;
@@ -237,6 +231,41 @@ public class EquipoDAO implements IEquipoDAO{
             }
         }
         return listado;
-}
-    
+    }
+
+    @Override
+    public int modificarEstadoEquipo(Equipo e) {
+        Connection con = null;
+        PreparedStatement pstm;
+        pstm = null;
+        int rtdo;
+        rtdo = 0;
+        try {
+            con = Fachada.getConnection();
+            String sql = "UPDATE equipo "
+                    + "SET estado= ?, ubicacionactual=? "
+                    + "WHERE codigodeequipo=?";
+            pstm = con.prepareStatement(sql);
+
+            pstm.setString(1, e.getEstado());
+            pstm.setString(2, e.getUbicacionActual());
+            pstm.setString(3, e.getCodigoEquipo());
+
+            rtdo = pstm.executeUpdate();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Código : "
+                    + ex.getErrorCode() + "\nError :" + ex.getMessage());
+        } finally {
+            try {
+                if (pstm != null) {
+                    pstm.close();
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Código : "
+                        + ex.getErrorCode() + "\nError :" + ex.getMessage());
+            }
+        }
+        return rtdo;
+    }
+
 }

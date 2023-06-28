@@ -9,7 +9,7 @@ package Modelos;
  * @author Eider
  */
 public class Prestamo {
-    
+
     private String nombreResponsable;
     private String fechaSalida;
     private String fechaRetorno;
@@ -17,7 +17,7 @@ public class Prestamo {
     private String estadoEquipo;
     private String actividades;
     private String unEquipo;
-    
+
     public Prestamo() {
         this.nombreResponsable = "";
         this.fechaSalida = "";
@@ -27,7 +27,7 @@ public class Prestamo {
         this.actividades = "";
         this.unEquipo = "";
     }
-    
+
     public Prestamo(String nombreResponsable, String fechaSalida, String fechaRetorno, String lugarDestion, String estadoEquipo, String actividades, String unEquipo) {
         this.nombreResponsable = nombreResponsable;
         this.fechaSalida = fechaSalida;
@@ -93,9 +93,5 @@ public class Prestamo {
     public void setUnEquipo(String unEquipo) {
         this.unEquipo = unEquipo;
     }
-    
-    
-    
-    
-    
+
 }

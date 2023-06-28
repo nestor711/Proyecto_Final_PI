@@ -44,20 +44,19 @@ public class ControladorVistaIngreso {
         public void actionPerformed(ActionEvent e) {
 
             if (e.getActionCommand().equalsIgnoreCase("INGRESAR")) {
-                boolean respuesta=false;
-                respuesta=miUser.validarLogin(txtUsuario.getText(), txtContra.getText());
-                
-                if(respuesta==true){
-                
-                JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso para el usuario: " + txtUsuario.getText());    
-                    
-                VistaDeOpciones vistaOpciones = new VistaDeOpciones();
-                ControladorVistaOpciones controladorOpciones = new ControladorVistaOpciones(vistaOpciones);
-                miVista.dispose();
-                
-                
-                
-                }else{
+
+                boolean respuesta = false;
+                respuesta = miUser.validarLogin(txtUsuario.getText(), txtContra.getText());
+
+                if (respuesta == true) {
+
+                    JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso para el usuario: " + txtUsuario.getText());
+
+                    VistaDeOpciones vistaOpciones = new VistaDeOpciones();
+                    ControladorVistaOpciones controladorOpciones = new ControladorVistaOpciones(vistaOpciones);
+                    miVista.dispose();
+
+                } else if (respuesta == false) {
                     JOptionPane.showMessageDialog(null, "Usuario y/o contraseña incorrectos");
                 }
 
@@ -73,16 +72,11 @@ public class ControladorVistaIngreso {
             }
 
         }
-        
-        
-        
+
     }
-    
-    
-    public void verificar(){
-        
-        
-      
+
+    public void verificar() {
+
     }
 
 }

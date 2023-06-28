@@ -4,6 +4,8 @@
  */
 package Vistas;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -15,20 +17,7 @@ import javax.swing.JTextField;
  * @author daniel
  */
 public class VistaRegistroUsuario extends javax.swing.JFrame {
-    
-    public void limpiar(){
-        
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
-        jTextField5.setText("");
-        jTextField6.setText("");
-        jTextField7.setText("");
-        
-        jPasswordField1.setText("");
-        
-    }
+  
     
     public JTextField gettxtNombre(){
         return jTextField1;
@@ -115,6 +104,9 @@ public class VistaRegistroUsuario extends javax.swing.JFrame {
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        Toolkit miPantalla= Toolkit.getDefaultToolkit();
+        Image miIcono= miPantalla.getImage("Univalle.png");
+        setIconImage(miIcono);
 //        setIconifiable(true);
 //        setClosable(true);
     }

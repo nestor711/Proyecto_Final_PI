@@ -60,7 +60,7 @@ public class ControladorUsuarios {
         public void actionPerformed(ActionEvent e) {
             if (e.getActionCommand().equalsIgnoreCase("Registrar")) {
 
-                //registrar();
+                registrar();
                 limpieza();
                 registro.dispose();
 
@@ -80,7 +80,14 @@ public class ControladorUsuarios {
     }
 
     private void limpieza() {
-        registro.limpiar();
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtNick.setText("");
+        txtContrasena.setText("");
+        txtDomicilio.setText("");
+        txtTelefono.setText("");
+        txtCorreo.setText("");
+
     }
 
     private void registrar() {

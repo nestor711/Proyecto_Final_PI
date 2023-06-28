@@ -14,6 +14,7 @@ public interface IUsuarioDAO {
 
     int grabarUsuario(Usuario u);
     boolean validarLogin(String userName, String password);
+    
     ArrayList<Usuario> listadoUsuarios(String nick);
     
 }

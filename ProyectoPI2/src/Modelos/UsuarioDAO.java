@@ -125,7 +125,7 @@ public class UsuarioDAO implements IUsuarioDAO {
 
     @Override
     public boolean validarLogin(String userName, String password) {
-        boolean respuesta=false;
+        boolean respuesta = false;
         Connection con = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -147,10 +147,10 @@ public class UsuarioDAO implements IUsuarioDAO {
             if (rs.next()) {
                 // Se encontró una coincidencia válida, el usuario y contraseña son válidos
                 // Crear un objeto Usuario y establecer sus atributos según los valores obtenidos del ResultSet
-                respuesta=true;
+                respuesta = true;
                 // Establecer los demás atributos del usuario según el esquema de la base de datos
-            }else{
-                respuesta=false;
+            } else {
+                respuesta = false;
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
@@ -181,11 +181,5 @@ public class UsuarioDAO implements IUsuarioDAO {
 
         return respuesta;
     }
-    
-    
-    
 
-
-    
 }
-        

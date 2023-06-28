@@ -11,7 +11,9 @@ import java.util.ArrayList;
  * @author Eider
  */
 public interface IPrestamoDAO {
-    int grabarPrestamo(Prestamo p);
+    int grabarPrestamo(Prestamo p,Equipo e);
     int borrarPrestamo(String codigo);
+    boolean buscarPrestamo(String id);
+    
     ArrayList<Prestamo> listadoPrestamo(String nombreRespon);
 }

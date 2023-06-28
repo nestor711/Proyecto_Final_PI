@@ -15,6 +15,8 @@ public interface IEquipoDAO {
     int grabarEquipo(Equipo e);
     int borrarEquipo(String codigo);
     int modificarEquipo(Equipo e);
+    int modificarEstadoEquipo(Equipo e);
+    
     ArrayList<Equipo> listadoEquipos(String codigoEquipo);
     ArrayList<Equipo> listadoEquiposDisponible(String ubicacion);
 }

@@ -22,7 +22,7 @@ public class Equipo {
     private String estado;
 
     public Equipo() {
-       
+
     }
 
     public Equipo(String codigoEquipo, String responsable, String frecuenciaMantenimiento, String ultimoMantenimiento, String proximoMantenimiento, String ubicacionActual, String FechaCompra, String estado) {
@@ -99,33 +99,6 @@ public class Equipo {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
-    
-    
-    
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        return hash;
-    }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Equipo other = (Equipo) obj;
-        return Objects.equals(this.codigoEquipo, other.codigoEquipo);
-    }
-    
-    
-    
-    
 
 }

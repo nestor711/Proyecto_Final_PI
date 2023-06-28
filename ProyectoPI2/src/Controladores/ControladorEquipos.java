@@ -18,7 +18,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ControladorEquipos {
 
-    
     private EquipoDAO modelo;
     private VistaIngresoDeEquipo miVista;
 
@@ -42,11 +41,10 @@ public class ControladorEquipos {
     public ControladorEquipos(EquipoDAO modelo, VistaIngresoDeEquipo miVista) {
         this.modelo = modelo;
         this.miVista = miVista;
-        
-        
+
         ArrayList<Equipo> listadoeqipos;
         listadoeqipos = this.modelo.listadoEquipos("0");
-        
+
         txtNombre = this.miVista.nombre();
         txtResponsable = this.miVista.responsable();
         txtFreMantenimiento = this.miVista.frecuenciaMantenimiento();
@@ -61,8 +59,7 @@ public class ControladorEquipos {
         btnBorrar = this.miVista.botonBorrar();
         btnSalir = this.miVista.botonSalir();
         btnModificar = this.miVista.botonModificar();
-        
-        
+
         tblEquipo = this.miVista.modelTblEquipo();
 
         btnLimpiar.addActionListener(new EquipoListener());
@@ -70,13 +67,11 @@ public class ControladorEquipos {
         btnBorrar.addActionListener(new EquipoListener());
         btnSalir.addActionListener(new EquipoListener());
         btnModificar.addActionListener(new EquipoListener());
-        
-        
+
         tblEquipo.addMouseListener(new ProgramaMouseListener());
         cargarProgramas(listadoeqipos);
 
     }
-
 
     public class EquipoListener implements ActionListener {
 
@@ -84,7 +79,7 @@ public class ControladorEquipos {
         public void actionPerformed(ActionEvent e) {
 
             if (e.getActionCommand().equalsIgnoreCase("NUEVO")) {
-                registrar();     
+                registrar();
                 tblEquipo.updateUI();
             }
             if (e.getActionCommand().equalsIgnoreCase("BORRAR")) {
@@ -102,45 +97,43 @@ public class ControladorEquipos {
         }
 
     }
-    
-    private void actualizar(){
-            
-            Equipo equipo = new Equipo();
-             
-            
-            equipo.setCodigoEquipo(txtNombre.getText().trim());
-            equipo.setResponsable(txtResponsable.getText());
-            equipo.setFrecuenciaMantenimiento(txtFreMantenimiento.getText());
-            equipo.setUltimoMantenimiento(txtUltMantenimiento.getText());
-            equipo.setProximoMantenimiento(txtProxMantenimiento.getText());
-            equipo.setUbicacionActual(txtUbiActual.getText());
-            equipo.setFechaCompra(txtFecCompra.getText());
-            equipo.setEstado(txtEstado.getText());     
-                         
-            if(modelo.modificarEquipo(equipo) == 1){
-                miVista.gestionMensajes(
-                        "Actualización exitosa",
-                        "Confirmación ", 
-                        JOptionPane.INFORMATION_MESSAGE);
-                                        
-                
-                ArrayList<Equipo> listadoequipos; 
-                listadoequipos = modelo.listadoEquipos("0");
-                cargarProgramas(listadoequipos);           
-            } else {
-                miVista.gestionMensajes(
-                        "Actualización Falida",
-                        "Confirmación ", 
-                        JOptionPane.ERROR_MESSAGE);                 
-            }              
-        } 
-    
-    public void cerrarAction(){
+
+    private void actualizar() {
+
+        Equipo equipo = new Equipo();
+
+        equipo.setCodigoEquipo(txtNombre.getText().trim());
+        equipo.setResponsable(txtResponsable.getText());
+        equipo.setFrecuenciaMantenimiento(txtFreMantenimiento.getText());
+        equipo.setUltimoMantenimiento(txtUltMantenimiento.getText());
+        equipo.setProximoMantenimiento(txtProxMantenimiento.getText());
+        equipo.setUbicacionActual(txtUbiActual.getText());
+        equipo.setFechaCompra(txtFecCompra.getText());
+        equipo.setEstado(txtEstado.getText());
+
+        if (modelo.modificarEquipo(equipo) == 1) {
+            miVista.gestionMensajes(
+                    "Actualización exitosa",
+                    "Confirmación ",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+            ArrayList<Equipo> listadoequipos;
+            listadoequipos = modelo.listadoEquipos("0");
+            cargarProgramas(listadoequipos);
+        } else {
+            miVista.gestionMensajes(
+                    "Actualización Falida",
+                    "Confirmación ",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void cerrarAction() {
         miVista.dispose();
-    } 
-    
-    private void limpiar(){
-        
+    }
+
+    private void limpiar() {
+
         txtEstado.setText("");
         txtFecCompra.setText("");
         txtFreMantenimiento.setText("");
@@ -149,11 +142,9 @@ public class ControladorEquipos {
         txtResponsable.setText("");
         txtUbiActual.setText("");
         txtUltMantenimiento.setText("");
-        
-        
+
     }
 
-    
     private void registrar() {
 
         if (txtNombre.getText().trim().equals("")) {
@@ -199,8 +190,6 @@ public class ControladorEquipos {
             equipo.setFechaCompra(txtFecCompra.getText());
             equipo.setEstado(txtEstado.getText());
 
-            
-
             int tamaño;
             tamaño = modelo.listadoEquipos(equipo.getCodigoEquipo()).size();
 
@@ -226,47 +215,46 @@ public class ControladorEquipos {
         }
 
     }
-    
-    private void limpiarListadoTabla(){
+
+    private void limpiarListadoTabla() {
         DefaultTableModel tableModelo;
         tableModelo = (DefaultTableModel) tblEquipo.getModel();
         tableModelo.getDataVector().removeAllElements();
     }
-    
-    
-    public void cargarProgramas(ArrayList<Equipo> listadoEquipos){
+
+    public void cargarProgramas(ArrayList<Equipo> listadoEquipos) {
         DefaultTableModel tableModelo;
-        tableModelo = (DefaultTableModel) tblEquipo.getModel();        
+        tableModelo = (DefaultTableModel) tblEquipo.getModel();
         limpiarListadoTabla();
-        for(int i= 0; i < listadoEquipos.size(); i++){
-              tableModelo.addRow(new Object[]{
-              listadoEquipos.get(i).getCodigoEquipo(),
-              listadoEquipos.get(i).getResponsable(),
-              listadoEquipos.get(i).getFrecuenciaMantenimiento(),
-              listadoEquipos.get(i).getUltimoMantenimiento(),
-              listadoEquipos.get(i).getProximoMantenimiento(),
-              listadoEquipos.get(i).getUbicacionActual(),
-              listadoEquipos.get(i).getFechaCompra(),
-              listadoEquipos.get(i).getEstado()});
+        for (int i = 0; i < listadoEquipos.size(); i++) {
+            tableModelo.addRow(new Object[]{
+                listadoEquipos.get(i).getCodigoEquipo(),
+                listadoEquipos.get(i).getResponsable(),
+                listadoEquipos.get(i).getFrecuenciaMantenimiento(),
+                listadoEquipos.get(i).getUltimoMantenimiento(),
+                listadoEquipos.get(i).getProximoMantenimiento(),
+                listadoEquipos.get(i).getUbicacionActual(),
+                listadoEquipos.get(i).getFechaCompra(),
+                listadoEquipos.get(i).getEstado()});
         }
     }
-    
-    class ProgramaMouseListener extends MouseAdapter{
+
+    class ProgramaMouseListener extends MouseAdapter {
+
         @Override
         public void mouseClicked(MouseEvent e) {
             DefaultTableModel tableModelo;
             tableModelo = (DefaultTableModel) tblEquipo.getModel();
 
-            if(tblEquipo.getSelectedRow()==-1){
-                if(tblEquipo.getRowCount()==0){
-                    JOptionPane.showMessageDialog(null,"No hay registros");
+            if (tblEquipo.getSelectedRow() == -1) {
+                if (tblEquipo.getRowCount() == 0) {
+                    JOptionPane.showMessageDialog(null, "No hay registros");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Seleccione una fila");
                 }
-                else{
-                    JOptionPane.showMessageDialog(null,"Seleccione una fila");
-                }
-            }else {                               
+            } else {
                 txtNombre.setText(tableModelo.getValueAt(
-                        tblEquipo.getSelectedRow(), 0).toString());            
+                        tblEquipo.getSelectedRow(), 0).toString());
                 txtResponsable.setText(tableModelo.getValueAt(
                         tblEquipo.getSelectedRow(), 1).toString());
                 txtFreMantenimiento.setText(tableModelo.getValueAt(
@@ -281,45 +269,44 @@ public class ControladorEquipos {
                         tblEquipo.getSelectedRow(), 6).toString());
                 txtEstado.setText(tableModelo.getValueAt(
                         tblEquipo.getSelectedRow(), 7).toString());
-                
+
             }
         }
     }
-    
-    private void borrar(){
-            String codigo = "";
-            codigo  = txtNombre.getText().trim();
-            
-            if(codigo.isEmpty()){
-                 miVista.gestionMensajes(
-                         "Por favor seleccione un equipo de la tabla",
-                         "Mensaje de Advertencia ", 
-                    JOptionPane.ERROR_MESSAGE);
-            }else{
-                int respuesta = JOptionPane.showConfirmDialog(null,
-                        "¿Desea Eliminar el equipo de nombre o codigo : " +
-                        codigo + " ?", 
-                        "Confirmación de Acción", JOptionPane.YES_NO_OPTION);
-                
-                if(respuesta == JOptionPane.YES_OPTION){                    
 
-                    if(modelo.borrarEquipo(codigo) ==  1){
-                        JOptionPane.showMessageDialog(null, 
-                                "Registro Borrado con éxtio", 
-                                "Confirmación de acción", 
-                                JOptionPane.INFORMATION_MESSAGE);                    
-                       
-                        ArrayList<Equipo> listadoequipo; 
-                        listadoequipo = modelo.listadoEquipos("0");
-                        cargarProgramas(listadoequipo);
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(null, 
-                                "Error al borrar",
-                                "Confirmación de acción", 
-                                JOptionPane.ERROR_MESSAGE);                    
-                    }
+    private void borrar() {
+        String codigo = "";
+        codigo = txtNombre.getText().trim();
+
+        if (codigo.isEmpty()) {
+            miVista.gestionMensajes(
+                    "Por favor seleccione un equipo de la tabla",
+                    "Mensaje de Advertencia ",
+                    JOptionPane.ERROR_MESSAGE);
+        } else {
+            int respuesta = JOptionPane.showConfirmDialog(null,
+                    "¿Desea Eliminar el equipo de nombre o codigo : "
+                    + codigo + " ?",
+                    "Confirmación de Acción", JOptionPane.YES_NO_OPTION);
+
+            if (respuesta == JOptionPane.YES_OPTION) {
+
+                if (modelo.borrarEquipo(codigo) == 1) {
+                    JOptionPane.showMessageDialog(null,
+                            "Registro Borrado con éxtio",
+                            "Confirmación de acción",
+                            JOptionPane.INFORMATION_MESSAGE);
+
+                    ArrayList<Equipo> listadoequipo;
+                    listadoequipo = modelo.listadoEquipos("0");
+                    cargarProgramas(listadoequipo);
+                } else {
+                    JOptionPane.showMessageDialog(null,
+                            "Error al borrar",
+                            "Confirmación de acción",
+                            JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
+    }
 }
